@@ -1,6 +1,7 @@
 package com.insuranceproject2.myrestcontroller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,11 +14,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.insuranceproject2.exception.IncompleteDetailsFilledException;
-import com.insuranceproject2.model.Claim;
+import com.insuranceproject2.model.Claim795;
+import com.insuranceproject2.model.Claim807;
 import com.insuranceproject2.model.Driver;
-import com.insuranceproject2.model.User;
+import com.insuranceproject2.model.Policy807;
+import com.insuranceproject2.model.User795;
+import com.insuranceproject2.model.User807;
 import com.insuranceproject2.service.ClaimService;
 import com.insuranceproject2.service.DriverService;
+import com.insuranceproject2.service.PolicyService;
 import com.insuranceproject2.service.UserService;
 
 @RestController
@@ -35,29 +40,31 @@ public class MyController {
 	private ClaimService claimService;
 	@Autowired
 	private DriverService driverService;
-
-
+	@Autowired
+	private PolicyService policyService;
+	
 	@PostMapping("/saveUserClaim")
 	@Transactional
-	public User saveUser(@RequestBody User user) {
-		User user1 = userService.saveUser(user);
-		List<Claim> claims = user.getClaimList();
+	public User795 saveUser(@RequestBody User795 user) {
+		System.out.println("abs "+user);
+		User795 user1 = userService.saveUser(user);
+		List<Claim795> list = user.getClaimList();
 
-		if (claims.isEmpty()) {
+		if (list.isEmpty()) {
 
 			throw new IncompleteDetailsFilledException(
 					"Claim should not be blank. Please enter at least one Claim request");
 		}
 
-		for (Claim claim : claims) {
-			claim.setUserId(user.getId());
-			claimService.saveClaim(claim);
+		for (Claim795 claim795 : list) {
+			claim795.setUserId(user.getId());
+			claimService.saveClaim(claim795);
 		}
 		return user1;
 	}
 	@GetMapping("/getUserWithClaimById/{id}")
-	public User getUserWithClaimById(@PathVariable("id") Integer id) {
-		User user2=userService.getUserWithClaimById(id);
+	public User795 getUserWithClaimById(@PathVariable("id") Integer id) {
+		User795 user2=userService.getUserWithClaimById(id);
 		
 		return user2;
 	}
@@ -98,5 +105,35 @@ System.out.println("pqr"+driver2);
 			driverService.deleteDriver(Id);
 		}
 	
+		
+		
+		@PostMapping("/saveUser")
+		public User807 saveUser(@RequestBody User807 user807) {
+			System.out.println("Hi......"+user807);
+			User807 user1 = userService.saveUser807(user807);
+			System.out.println("Hi......807"+user1);
+			List<Policy807> policyList =user807.getPolicyList();
+			System.out.println("Sarika......asvdasvdhas"+policyList);
+			for(Policy807 policy807: policyList) {
+
+				policy807.setId(user807.getUserId());
+				System.out.println("jhbsjfjsadha"+policy807);
+				policyService.savePolicy807(policy807);
+				
+				Set<Claim807> claimSet = policy807.getClaimSet();
+				for(Claim807 claimList: claimSet) {
+					
+					claimList.setPolicyNo(policy807.getPolicySerialNo());
+					claimService.saveClaim807(claimList);
+				}
+			}
+			return user1;
+		}
+		
+		@GetMapping("/getUser/{id}")
+		public User807 getUser(@PathVariable("id") Integer id) {
+			User807 user1 = userService.getUser807(id);
+			return user1;
+		} 
 
 }

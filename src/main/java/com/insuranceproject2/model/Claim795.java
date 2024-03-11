@@ -7,8 +7,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "claim")
-public class Claim {
+@Table(name = "claim795")
+public class Claim795 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int claimId;
@@ -16,6 +16,7 @@ public class Claim {
 	private String claimCause;
 	private Long claimAmount;
 	private int userId;
+	
 	public int getClaimId() {
 		return claimId;
 	}
@@ -48,10 +49,7 @@ public class Claim {
 	}
 	@Override
 	public String toString() {
-		return "Claim [claimId=" + claimId + ", claimType=" + claimType + ", claimCause=" + claimCause
+		return "Claim795 [claimId=" + claimId + ", claimType=" + claimType + ", claimCause=" + claimCause
 				+ ", claimAmount=" + claimAmount + ", userId=" + userId + "]";
 	}
-	
-	
-
 }
