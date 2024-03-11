@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.insuranceproject2.model.Policy807;
 @Repository
-public interface PolicyRepository extends JpaRepository<Policy807, Serializable>{
+public interface PolicyRepository807 extends JpaRepository<Policy807, Serializable>{
 
 }

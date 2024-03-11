@@ -1,7 +1,11 @@
 package com.insuranceproject2.service;
 
+import java.util.List;
+
 import com.insuranceproject2.model.User795;
+import com.insuranceproject2.model.User802;
 import com.insuranceproject2.model.User807;
+import com.insuranceproject2.model.User808;
 
 public interface UserService {
 	public User795 saveUser(User795 user);
@@ -9,4 +13,12 @@ public interface UserService {
 	
 	public User807 saveUser807(User807 user807);
 	public User807 getUser807(Integer userId);
+	
+	public User808 setSaveUser(User808 user808);
+	public User808 getUserPolicyDetails(Integer userId);
+	
+	public User802 saveUser802(User802 user802);
+	public List<User802> getUserByFirstName(String firstName);
+	public List<User802> getUserByLastName(String lastName);
+	public List<User802> getUserByEmail(String email);
 }
