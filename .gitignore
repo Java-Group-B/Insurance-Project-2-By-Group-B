@@ -33,6 +33,7 @@ build/
 .vscode/
 /.mvn
 /.settings
+/bin/
 mvnw
 mvnw.cmd
 
