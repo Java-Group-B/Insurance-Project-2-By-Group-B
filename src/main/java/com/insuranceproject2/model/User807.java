@@ -1,10 +1,6 @@
  package com.insuranceproject2.model;
 
 import java.util.List;
-
-import javax.swing.plaf.multi.MultiInternalFrameUI;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

@@ -3,7 +3,6 @@ package com.insuranceproject2.config;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
@@ -14,8 +13,8 @@ import io.swagger.v3.oas.models.info.License;
 @EnableAutoConfiguration
 public class SwaggerConfig {
 
-	 @Bean
-	  public OpenAPI getRestApiDocumentation() {
+    @Bean
+    OpenAPI getRestApiDocumentation() {
 	      return new OpenAPI()
 	              .info(new Info().title("Insurance API")
 	              .description("Insurance details for users")

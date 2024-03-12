@@ -1,9 +1,6 @@
 package com.insuranceproject2.service;
 
 import java.util.List;
-
-import org.springframework.web.bind.annotation.RequestBody;
-
 import com.insuranceproject2.model.Driver;
 
 public interface DriverService {

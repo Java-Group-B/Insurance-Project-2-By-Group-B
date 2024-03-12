@@ -2,9 +2,6 @@ package com.insuranceproject2.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.insuranceproject2.exception.IncompleteDetailsFilledException;
 import com.insuranceproject2.model.Claim795;
 import com.insuranceproject2.model.Claim798;
@@ -13,6 +10,7 @@ import com.insuranceproject2.repository.ClaimRepository795;
 import com.insuranceproject2.repository.ClaimRepository798;
 import com.insuranceproject2.repository.ClaimRepository807;
 import com.insuranceproject2.service.ClaimService;
+
 @Service
 public class ClaimServiceImpl implements ClaimService {
 	@Autowired

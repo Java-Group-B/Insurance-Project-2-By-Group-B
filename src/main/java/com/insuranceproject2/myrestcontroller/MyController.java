@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.insuranceproject2.exception.IncompleteDetailsFilledException;
 import com.insuranceproject2.model.Claim795;
 import com.insuranceproject2.model.Claim807;
@@ -197,7 +196,7 @@ public class MyController {
 	@GetMapping("/getUserPolicyDetails/{userId}")
 	public User808 getUserPolicyDetails(@PathVariable("userId") Integer userId) {
 		User808 user1 = userService.getUserPolicyDetails(userId);
-		return user1;
+			return user1;
 	}
 
 	@PostMapping("/saveUser802")

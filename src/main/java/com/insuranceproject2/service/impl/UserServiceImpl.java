@@ -1,16 +1,14 @@
 package com.insuranceproject2.service.impl;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.insuranceproject2.exception.IncompleteDetailsFilledException;
+import com.insuranceproject2.exception.UserNotFoundException;
 import com.insuranceproject2.model.User795;
 import com.insuranceproject2.model.User802;
 import com.insuranceproject2.model.User807;
 import com.insuranceproject2.model.User808;
-import com.insuranceproject2.repository.ClaimRepository795;
 import com.insuranceproject2.repository.UserRepository795;
 import com.insuranceproject2.repository.UserRepository802;
 import com.insuranceproject2.repository.UserRepository807;
@@ -112,8 +110,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User808 getUserPolicyDetails(Integer userId) {
-		User808 userDataFetch = userRepository808.findById(userId).get();
-		return userDataFetch;
+		User808 user=userRepository808.findByUserId(userId);
+		if (user == null) {  //1==null-F , null==null-T
+			throw new UserNotFoundException("User id is not present into database.");
+		}
+		return user;
 	}
 
 }

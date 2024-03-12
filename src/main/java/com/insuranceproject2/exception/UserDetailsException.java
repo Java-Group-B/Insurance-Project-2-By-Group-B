@@ -1,10 +1,10 @@
 package com.insuranceproject2.exception;
 
-public class UserClaimException {
+public class UserDetailsException {
 
 	private final String message;
 
-	public UserClaimException(String message) {
+	public UserDetailsException(String message) {
 		this.message = message;
 	}
 

@@ -8,7 +8,7 @@ import com.insuranceproject2.model.User808;
 
 @Repository
 public interface UserRepository808 extends CrudRepository<User808, Serializable>{
-	
+	public User808 findByUserId(Integer id);
 }
 
 
