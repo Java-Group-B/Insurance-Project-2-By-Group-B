@@ -57,12 +57,6 @@ public class MyController {
 	public User795 saveUser(@RequestBody User795 user) {
 		User795 user1 = userService.saveUser(user);
 		List<Claim795> list = user.getClaimList();
-		if (list.isEmpty()) {
-
-			throw new IncompleteDetailsFilledException(
-					"Claim should not be blank. Please enter at least one Claim request");
-		}
-
 		for (Claim795 claim795 : list) {
 			claim795.setUserId(user.getId());
 			claimService.saveClaim(claim795);

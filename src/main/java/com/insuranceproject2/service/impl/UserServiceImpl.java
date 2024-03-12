@@ -47,7 +47,10 @@ public class UserServiceImpl implements UserService {
 		if (user.getEmailId() == null) {
 			throw new IncompleteDetailsFilledException("Email id cannot blank.Please Enter valid mail id.");
 		}
+		if (user.getClaimList() == null) {
+			throw new IncompleteDetailsFilledException("Claim should not be blank. Please enter at least one Claim request");
 
+		}
 		User795 user1 = userRepository795.save(user);
 		return user1;
 	}
