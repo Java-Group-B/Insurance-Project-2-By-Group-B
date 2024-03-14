@@ -30,7 +30,7 @@ public class ClaimServiceImpl implements ClaimService {
 		  );
 		  
 		  } if(claim795.getClaimCause()==null) { throw new
-		  IncompleteDetailsFilledException("ClaimType should not be blank. Please Enter valid ClaimType"
+		  IncompleteDetailsFilledException("ClaimCause should not be blank. Please Enter valid ClaimCause"
 		  );
 		  
 		  } if(claim795.getClaimAmount()==null) { throw new
