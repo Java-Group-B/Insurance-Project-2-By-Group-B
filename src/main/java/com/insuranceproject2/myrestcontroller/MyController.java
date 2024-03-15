@@ -79,6 +79,12 @@ public class MyController {
 		return user2;
 	}
 
+	@GetMapping("/userWithClaimDetails/{id}")
+	public LinkedHashMap userWithClaimDetails(@PathVariable("id") Integer id) {
+		LinkedHashMap user_Claim_Details = userService.getUserWithClaimById(id);
+		return user_Claim_Details;
+	}
+
 	@PostMapping("/saveUserClaim")
 	@Transactional
 	public User795 saveUser(@RequestBody User795 user) {
@@ -90,18 +96,16 @@ public class MyController {
 		}
 		return user1;
 	}
-	
 
 	@GetMapping("/findByFirstName/{id}")
 	public LinkedHashMap findByFirstName(@PathVariable("id") Integer id) {
 		LinkedHashMap user1 = userService.getById(id);
 		return user1;
 	}
-	
 
 	@GetMapping("/getUserWithClaimById/{id}")
-	public User795 getUserWithClaimById(@PathVariable("id") Integer id) {
-		User795 user2 = userService.getUserWithClaimById(id);
+	public User795 getUserWithClaimById796(@PathVariable("id") Integer id) {
+		User795 user2 = userService.getUserWithClaimById795(id);
 
 		return user2;
 	}
@@ -209,10 +213,9 @@ public class MyController {
 
 			for (PolicyPremium808 policyPremium808 : policyPremiumPlans) {
 
-				
-					policyPremium808.setPolicyNo(policy808.getPolicySerialNo());
-					premiumService.setSavePremiumPolicy(policyPremium808);
-				
+				policyPremium808.setPolicyNo(policy808.getPolicySerialNo());
+				premiumService.setSavePremiumPolicy(policyPremium808);
+
 			}
 		}
 		return user1;

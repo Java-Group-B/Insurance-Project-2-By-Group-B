@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepository;
 
 	@Override
-	
+
 	public User saveUser(User user) {
 		if (user.getFirstName() == null && user.getLastName() == null && user.getEmailId() == null) {
 			throw new IncompleteDetailsFilledException("User Details cannot be blank.Please Enter User Details");
@@ -56,32 +56,44 @@ public class UserServiceImpl implements UserService {
 		if (user.getEmailId() == null) {
 			throw new IncompleteDetailsFilledException("Email id cannot blank.Please Enter valid mail id.");
 		}
-		User user2= userRepository.save(user);
+		User user2 = userRepository.save(user);
 		return user2;
 	}
+
 	@Override
-	public LinkedHashMap getById(Integer id) {
-		//List<User> userFirst=userRepository.getByFirstName(firstName);
+	public LinkedHashMap getUserWithClaimById(Integer id) {
 		User user = this.userRepository.findById(id)
 				.orElseThrow(() -> new IncompleteDetailsFilledException("Id is not present in Database."));
-		LinkedHashMap map=new LinkedHashMap<>();
-		
-	//List<Policy> policies=new ArrayList<Policy>();
-		 
-			 map.put("id",user.getId());
-			 map.put("firstName",user.getFirstName());
-			 map.put("lastName",user.getLastName());
-			 map.put("email",user.getEmailId());
-			 map.put("policies",user.getPolicylist());
-			 map.put("claim",user.getClaimlist());
-		 
-		 
-		/*
-		 * List<User802> userFirstName = userRepository802.findByFirstName(firstName);
-		 * return userFirstName;
-		 */
+		LinkedHashMap map = new LinkedHashMap<>();
+
+		map.put("id", user.getId());
+		map.put("firstName", user.getFirstName());
+		map.put("lastName", user.getLastName());
+		map.put("email", user.getEmailId());
+		map.put("claim", user.getClaimlist());
+
 		return map;
 	}
+
+	@Override
+	public LinkedHashMap getById(Integer id) {
+		// List<User> userFirst=userRepository.getByFirstName(firstName);
+		User user = this.userRepository.findById(id)
+				.orElseThrow(() -> new IncompleteDetailsFilledException("Id is not present in Database."));
+		LinkedHashMap map = new LinkedHashMap<>();
+
+		// List<Policy> policies=new ArrayList<Policy>();
+
+		map.put("id", user.getId());
+		map.put("firstName", user.getFirstName());
+		map.put("lastName", user.getLastName());
+		map.put("email", user.getEmailId());
+		map.put("policies", user.getPolicylist());
+		map.put("claim", user.getClaimlist());
+
+		return map;
+	}
+
 	@Override
 	public User795 saveUser795(User795 user) {
 		if (user.getFirstName() == null && user.getLastName() == null && user.getEmailId() == null) {
@@ -107,7 +119,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User795 getUserWithClaimById(Integer id) {
+	public User795 getUserWithClaimById795(Integer id) {
 		User795 user = null;
 		try {
 
@@ -169,7 +181,5 @@ public class UserServiceImpl implements UserService {
 		}
 		return user;
 	}
-
-	
 
 }

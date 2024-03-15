@@ -17,9 +17,10 @@ import com.insuranceproject2.model.UserCto;
 public interface UserService {
 	
 	public User saveUser(User user);
+	public LinkedHashMap getUserWithClaimById(Integer id);
 	public LinkedHashMap getById(Integer id);
 	public User795 saveUser795(User795 user);
-	public User795 getUserWithClaimById(Integer id);
+	public User795 getUserWithClaimById795(Integer id);
 	
 	public User807 saveUser807(User807 user807);
 	public User807 getUser807(Integer userId);
