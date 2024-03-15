@@ -1,14 +1,24 @@
 package com.insuranceproject2.service;
 
+import java.security.PublicKey;
+import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.insuranceproject2.model.User;
 import com.insuranceproject2.model.User795;
 import com.insuranceproject2.model.User802;
 import com.insuranceproject2.model.User807;
 import com.insuranceproject2.model.User808;
+import com.insuranceproject2.model.UserCto;
+
 
 public interface UserService {
-	public User795 saveUser(User795 user);
+	
+	public User saveUser(User user);
+	public LinkedHashMap getById(Integer id);
+	public User795 saveUser795(User795 user);
 	public User795 getUserWithClaimById(Integer id);
 	
 	public User807 saveUser807(User807 user807);

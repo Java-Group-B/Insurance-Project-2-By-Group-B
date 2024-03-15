@@ -1,8 +1,10 @@
 package com.insuranceproject2.myrestcontroller;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,19 +14,24 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.insuranceproject2.exception.IncompleteDetailsFilledException;
+import com.insuranceproject2.model.Claim;
 import com.insuranceproject2.model.Claim795;
 import com.insuranceproject2.model.Claim807;
 import com.insuranceproject2.model.Driver;
+import com.insuranceproject2.model.Policy;
 import com.insuranceproject2.model.Policy807;
 import com.insuranceproject2.model.Policy808;
 import com.insuranceproject2.model.PolicyPremium808;
+import com.insuranceproject2.model.Premium;
+import com.insuranceproject2.model.User;
 import com.insuranceproject2.model.User795;
 import com.insuranceproject2.model.User802;
 import com.insuranceproject2.model.User807;
 import com.insuranceproject2.model.User808;
+import com.insuranceproject2.model.UserCto;
 import com.insuranceproject2.service.ClaimService;
 import com.insuranceproject2.service.DriverService;
-import com.insuranceproject2.service.PolicyPremiumService;
+import com.insuranceproject2.service.PremiumService;
 import com.insuranceproject2.service.PolicyService;
 import com.insuranceproject2.service.UserService;
 
@@ -48,19 +55,49 @@ public class MyController {
 	@Autowired
 	private PolicyService policyService;
 	@Autowired
-	private PolicyPremiumService policyPremiumService;
+	private PremiumService premiumService;
+
+	@PostMapping("/saveUser")
+	@Transactional
+	public User saveUser(@RequestBody User user) {
+		User user2 = userService.saveUser(user);
+		List<Policy> pList = user.getPolicylist();
+		for (Policy p : pList) {
+			p.setUserId(user.getId());
+			Policy policy2 = policyService.savePolicy(p);
+		}
+		List<Premium> prList = user.getPremiunlist();
+		for (Premium pr : prList) {
+			pr.setUid(user.getId());
+			Premium premium2 = premiumService.savePremium(pr);
+		}
+		List<Claim> cList = user.getClaimlist();
+		for (Claim c : cList) {
+			c.setUsd(user.getId());
+			Claim claim = claimService.saveClaim(c);
+		}
+		return user2;
+	}
 
 	@PostMapping("/saveUserClaim")
 	@Transactional
 	public User795 saveUser(@RequestBody User795 user) {
-		User795 user1 = userService.saveUser(user);
+		User795 user1 = userService.saveUser795(user);
 		List<Claim795> list = user.getClaimList();
 		for (Claim795 claim795 : list) {
 			claim795.setUserId(user.getId());
-			claimService.saveClaim(claim795);
+			claimService.saveClaim795(claim795);
 		}
 		return user1;
 	}
+	
+
+	@GetMapping("/findByFirstName/{id}")
+	public LinkedHashMap findByFirstName(@PathVariable("id") Integer id) {
+		LinkedHashMap user1 = userService.getById(id);
+		return user1;
+	}
+	
 
 	@GetMapping("/getUserWithClaimById/{id}")
 	public User795 getUserWithClaimById(@PathVariable("id") Integer id) {
@@ -105,7 +142,7 @@ public class MyController {
 		driverService.deleteDriver(Id);
 	}
 
-	@PostMapping("/saveUser")
+	@PostMapping("/saveUser807")
 	public User807 saveUser(@RequestBody User807 user807) {
 		User807 user1 = userService.saveUser807(user807);
 		List<Policy807> policyList = user807.getPolicyList();
@@ -172,22 +209,10 @@ public class MyController {
 
 			for (PolicyPremium808 policyPremium808 : policyPremiumPlans) {
 
-				if (policyPremium808.getPremiumId() == null && policyPremium808.getPremiumPlanName() == null
-						&& policyPremium808.getPremiumType() == null && policyPremium808.getPremiumAmount() == 0) {
-					throw new IncompleteDetailsFilledException(
-							"premium details are not present.\n please enter the details first");
-				} else if (policyPremium808.getPremiumId() == null) {
-					throw new IncompleteDetailsFilledException("premium id is mandetory");
-				} else if (policyPremium808.getPremiumPlanName() == null) {
-					throw new IncompleteDetailsFilledException("premium plan name is mandetory");
-				} else if (policyPremium808.getPremiumAmount() == 0) {
-					throw new IncompleteDetailsFilledException("premium amount is mandetory");
-				} else if (policyPremium808.getPremiumType() == null) {
-					throw new IncompleteDetailsFilledException("premium type is mandetory");
-				} else {
+				
 					policyPremium808.setPolicyNo(policy808.getPolicySerialNo());
-					policyPremiumService.setSavePremiumPolicy(policyPremium808);
-				}
+					premiumService.setSavePremiumPolicy(policyPremium808);
+				
 			}
 		}
 		return user1;
@@ -196,7 +221,7 @@ public class MyController {
 	@GetMapping("/getUserPolicyDetails/{userId}")
 	public User808 getUserPolicyDetails(@PathVariable("userId") Integer userId) {
 		User808 user1 = userService.getUserPolicyDetails(userId);
-			return user1;
+		return user1;
 	}
 
 	@PostMapping("/saveUser802")

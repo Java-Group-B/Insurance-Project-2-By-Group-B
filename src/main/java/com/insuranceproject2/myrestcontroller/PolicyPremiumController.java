@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.insuranceproject2.model.PolicyPremium808;
-import com.insuranceproject2.service.PolicyPremiumService;
+import com.insuranceproject2.service.PremiumService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -17,7 +17,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class PolicyPremiumController {
 
 	@Autowired
-	private PolicyPremiumService policyPremiumService;
+	private PremiumService premiumService;
 	
 	@GetMapping("/getUserPremiumDetails/{premiumId}")
 	@Operation(summary="Get the Policy Premium",description="provides all plans passed for user")
@@ -26,7 +26,7 @@ public class PolicyPremiumController {
     @ApiResponse(responseCode = "404", description = "Entity Not Found")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")         
 	public PolicyPremium808 getUserPremiumDetails(@PathVariable("premiumId") Integer premiumId) {
-		PolicyPremium808 policyPremium808 = policyPremiumService.getPolicyPremiumDetails(premiumId);
+		PolicyPremium808 policyPremium808 = premiumService.getPolicyPremiumDetails(premiumId);
 		return policyPremium808;
 	}
 }
