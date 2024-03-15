@@ -1,0 +1,56 @@
+{
+"firstName":"irfan",
+"lastName":"shaikh",
+"emailId":"irfan@gmail.com",
+"policylist":[{
+"policyId":"A101",
+"policyStatus":"active",
+"policyName":"Health Insurance",
+"coverageAmount":500000.00,
+"policyTerm":5
+},
+{
+"policyId":"A102",
+"policyStatus":"active",
+"policyName":"Car Insurance",
+"coverageAmount":100000.00,
+"policyTerm":10
+}],
+"premiunlist":  [
+                    {
+                        "premiumId":"TLI1200P403",
+                        "premiumPlanName":"Term Life Insurance Plan",
+                        "premiumType":"Monthly",
+                        "premiumAmount":20000.00
+                    },
+                    {
+                        "premiumId":"RP1200P415",
+                        "premiumPlanName":"Retirement Plan",
+                        "premiumType":"Annual",
+                        "premiumAmount":83333.00
+                    },
+                    {
+                        "premiumId":"CFI1200P481",
+                        "premiumPlanName":"Child Future Plan",
+                        "premiumType":"Monthly",
+                        "premiumAmount":15896.00
+                    }
+                ],
+"claimlist":[
+				    { 
+						"claimType":"Cashless",
+						"claimCause":"Death by Heart attack",
+                        "claimAmount":200000
+                    },
+                    {
+                       "claimType":"Reimbursement",
+						"claimCause":"Accident",
+                        "claimAmount":433330
+                    },
+                    {
+                        "claimType":"by check ",
+						"claimCause":"car theft",
+                        "claimAmount":20833
+                    }
+				]
+}

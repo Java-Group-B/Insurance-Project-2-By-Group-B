@@ -1,8 +1,6 @@
-CREATE DATABASE  IF NOT EXISTS `insuranceproject2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `insuranceproject2`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: localhost    Database: insuranceproject2
+-- Host: 127.0.0.1    Database: insuranceproject2_db
 -- ------------------------------------------------------
 -- Server version	8.0.36
 
@@ -18,30 +16,32 @@ USE `insuranceproject2`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `policypremium808`
+-- Table structure for table `policy`
 --
 
-DROP TABLE IF EXISTS `policypremium808`;
+DROP TABLE IF EXISTS `policy`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `policypremium808` (
-  `policy_no` int NOT NULL,
-  `premium_amount` double DEFAULT NULL,
-  `premium_serial_no` int NOT NULL AUTO_INCREMENT,
-  `plan_name` varchar(255) DEFAULT NULL,
-  `premium_id` varchar(255) DEFAULT NULL,
-  `premium_type` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`premium_serial_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `policy` (
+  `policy_serial_no` int NOT NULL AUTO_INCREMENT,
+  `coverage_amount` double NOT NULL,
+  `policy_id` varchar(255) DEFAULT NULL,
+  `policy_name` varchar(255) DEFAULT NULL,
+  `policy_status` varchar(255) DEFAULT NULL,
+  `policy_term` int NOT NULL,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`policy_serial_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `policypremium808`
+-- Dumping data for table `policy`
 --
 
-LOCK TABLES `policypremium808` WRITE;
-/*!40000 ALTER TABLE `policypremium808` DISABLE KEYS */;
-/*!40000 ALTER TABLE `policypremium808` ENABLE KEYS */;
+LOCK TABLES `policy` WRITE;
+/*!40000 ALTER TABLE `policy` DISABLE KEYS */;
+INSERT INTO `policy` VALUES (1,500000,'A101','Health Insurance','active',5,1),(2,100000,'A102','Car Insurance','active',10,1);
+/*!40000 ALTER TABLE `policy` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-12  0:33:17
+-- Dump completed on 2024-03-16  0:07:32

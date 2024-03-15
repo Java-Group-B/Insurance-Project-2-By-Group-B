@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
+
 @Entity
 @Table(name = "claim")
 public class Claim {
@@ -16,8 +17,8 @@ public class Claim {
 	private String claimType;
 	private String claimCause;
 	private long claimAmount;
-@Column(name="userId")
-	private int usd;
+	@Column(name = "userId")
+	private int userId$;
 
 	public int getClaimId() {
 		return claimId;
@@ -51,18 +52,18 @@ public class Claim {
 		this.claimAmount = claimAmount;
 	}
 
-	public int getUsd() {
-		return usd;
+	public int getUserId$() {
+		return userId$;
 	}
 
-	public void setUsd(int usd) {
-		this.usd = usd;
+	public void setUserId$(int userId$) {
+		this.userId$ = userId$;
 	}
 
 	@Override
 	public String toString() {
 		return "Claim [claimId=" + claimId + ", claimType=" + claimType + ", claimCause=" + claimCause
-				+ ", claimAmount=" + claimAmount + ", usd=" + usd + "]";
+				+ ", claimAmount=" + claimAmount + ", userId$=" + userId$ + "]";
 	}
-	
+
 }

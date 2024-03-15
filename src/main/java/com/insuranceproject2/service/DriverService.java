@@ -4,22 +4,15 @@ import java.util.List;
 import com.insuranceproject2.model.Driver;
 
 public interface DriverService {
-	// 1>>all records
-	public List<Driver> getAllDrivers();  
-	 //2 >>getting  record >> method findById()
-	public Driver getDriverById(int Id) ;
-	
-	//3>>saving a record >> method save()   
-	//public Driver saveDrivers(Driver driver) ;
+
+	public List<Driver> getAllDrivers();
+
+	public Driver getDriverById(int Id);
+
 	public Driver saveDrivers(Driver driver);
 
-	// 4>>updating a record  
-	
-	public Driver updateDriverById(Driver driver);
-	
-	//5>>deleting  record >> method deleteById() 
+	public Driver updateDriverById(Driver driver, Integer id);
+
 	public void deleteDriver(int id);
-	
-	
-	
-}  
+
+}

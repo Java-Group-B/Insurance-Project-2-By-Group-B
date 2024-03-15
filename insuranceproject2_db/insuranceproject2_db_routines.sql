@@ -1,8 +1,6 @@
-CREATE DATABASE  IF NOT EXISTS `insuranceproject2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `insuranceproject2`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: localhost    Database: insuranceproject2
+-- Host: 127.0.0.1    Database: insuranceproject2_db
 -- ------------------------------------------------------
 -- Server version	8.0.36
 
@@ -18,30 +16,12 @@ USE `insuranceproject2`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `claim`
+-- Dumping events for database 'insuranceproject2_db'
 --
 
-DROP TABLE IF EXISTS `claim`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `claim` (
-  `claim_id` int NOT NULL AUTO_INCREMENT,
-  `policy_no` int NOT NULL,
-  `claim_amount` bigint DEFAULT NULL,
-  `claim_cause` varchar(255) DEFAULT NULL,
-  `claim_type` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`claim_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
 --
--- Dumping data for table `claim`
+-- Dumping routines for database 'insuranceproject2_db'
 --
-
-LOCK TABLES `claim` WRITE;
-/*!40000 ALTER TABLE `claim` DISABLE KEYS */;
-/*!40000 ALTER TABLE `claim` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -52,4 +32,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-12  0:33:18
+-- Dump completed on 2024-03-16  0:07:32

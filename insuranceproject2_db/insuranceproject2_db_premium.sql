@@ -1,8 +1,6 @@
-CREATE DATABASE  IF NOT EXISTS `insuranceproject2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `insuranceproject2`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: localhost    Database: insuranceproject2
+-- Host: 127.0.0.1    Database: insuranceproject2_db
 -- ------------------------------------------------------
 -- Server version	8.0.36
 
@@ -18,31 +16,31 @@ USE `insuranceproject2`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `policy808`
+-- Table structure for table `premium`
 --
 
-DROP TABLE IF EXISTS `policy808`;
+DROP TABLE IF EXISTS `premium`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `policy808` (
-  `policy_coverage (rs)` double DEFAULT NULL,
-  `policy_serialno` int NOT NULL AUTO_INCREMENT,
-  `policy_term (yr)` int DEFAULT NULL,
-  `user_id` int NOT NULL,
-  `policy_id` varchar(255) DEFAULT NULL,
-  `policy_name` varchar(255) DEFAULT NULL,
-  `policy_status` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`policy_serialno`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `premium` (
+  `premium_serial_no` int NOT NULL AUTO_INCREMENT,
+  `premium_amount` double DEFAULT NULL,
+  `premium_id` varchar(255) DEFAULT NULL,
+  `plan_name` varchar(255) DEFAULT NULL,
+  `premium_type` varchar(255) DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  PRIMARY KEY (`premium_serial_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `policy808`
+-- Dumping data for table `premium`
 --
 
-LOCK TABLES `policy808` WRITE;
-/*!40000 ALTER TABLE `policy808` DISABLE KEYS */;
-/*!40000 ALTER TABLE `policy808` ENABLE KEYS */;
+LOCK TABLES `premium` WRITE;
+/*!40000 ALTER TABLE `premium` DISABLE KEYS */;
+INSERT INTO `premium` VALUES (1,20000,'TLI1200P403','Term Life Insurance Plan','Monthly',1),(2,83333,'RP1200P415','Retirement Plan','Annual',1),(3,15896,'CFI1200P481','Child Future Plan','Monthly',1);
+/*!40000 ALTER TABLE `premium` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-12  0:33:17
+-- Dump completed on 2024-03-16  0:07:31

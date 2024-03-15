@@ -1,8 +1,6 @@
-CREATE DATABASE  IF NOT EXISTS `insuranceproject2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `insuranceproject2`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: localhost    Database: insuranceproject2
+-- Host: 127.0.0.1    Database: insuranceproject2_db
 -- ------------------------------------------------------
 -- Server version	8.0.36
 
@@ -18,29 +16,30 @@ USE `insuranceproject2`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `claim807`
+-- Table structure for table `claim`
 --
 
-DROP TABLE IF EXISTS `claim807`;
+DROP TABLE IF EXISTS `claim`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `claim807` (
-  `claim_id` int NOT NULL,
-  `policy_no` int NOT NULL,
-  `claim_amount` varchar(255) DEFAULT NULL,
+CREATE TABLE `claim` (
+  `claim_id` int NOT NULL AUTO_INCREMENT,
+  `claim_amount` bigint NOT NULL,
   `claim_cause` varchar(255) DEFAULT NULL,
   `claim_type` varchar(255) DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
   PRIMARY KEY (`claim_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `claim807`
+-- Dumping data for table `claim`
 --
 
-LOCK TABLES `claim807` WRITE;
-/*!40000 ALTER TABLE `claim807` DISABLE KEYS */;
-/*!40000 ALTER TABLE `claim807` ENABLE KEYS */;
+LOCK TABLES `claim` WRITE;
+/*!40000 ALTER TABLE `claim` DISABLE KEYS */;
+INSERT INTO `claim` VALUES (1,200000,'Death by Heart attack','Cashless',1),(2,433330,'Accident','Reimbursement',1),(3,20833,'car theft','by check ',1);
+/*!40000 ALTER TABLE `claim` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-12  0:33:15
+-- Dump completed on 2024-03-16  0:07:30

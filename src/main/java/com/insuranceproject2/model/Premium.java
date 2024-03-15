@@ -23,7 +23,7 @@ public class Premium {
 	@Column(name="premium_amount")
 	private double premiumAmount;
 	@Column(name = "userId")
-	private int uid;
+	private int user_id;
 	public int getPremiumSerialNo() {
 		return premiumSerialNo;
 	}
@@ -54,18 +54,17 @@ public class Premium {
 	public void setPremiumAmount(double premiumAmount) {
 		this.premiumAmount = premiumAmount;
 	}
-	public int getUid() {
-		return uid;
+	public int getUser_id() {
+		return user_id;
 	}
-	public void setUid(int uid) {
-		this.uid = uid;
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 	@Override
 	public String toString() {
 		return "Premium [premiumSerialNo=" + premiumSerialNo + ", premiumId=" + premiumId + ", premiumPlanName="
-				+ premiumPlanName + ", premiumType=" + premiumType + ", premiumAmount=" + premiumAmount + ", uid=" + uid
-				+ "]";
+				+ premiumPlanName + ", premiumType=" + premiumType + ", premiumAmount=" + premiumAmount + ", user_id="
+				+ user_id + "]";
 	}
-	
 	
 }

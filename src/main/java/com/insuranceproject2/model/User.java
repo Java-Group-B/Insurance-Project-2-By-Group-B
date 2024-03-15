@@ -19,10 +19,11 @@ public class User {
 	private String emailId;
 	@OneToMany(mappedBy = "userId")
 	private List<Policy> policylist;
-	@OneToMany(mappedBy = "uid")
+	@OneToMany(mappedBy = "user_id")
 	private List<Premium> premiunlist;
-	@OneToMany(mappedBy = "usd")
+	@OneToMany(mappedBy = "userId$")
 	private List<Claim> claimlist;
+	
 	public int getId() {
 		return id;
 	}
